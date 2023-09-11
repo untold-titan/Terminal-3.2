@@ -8,7 +8,11 @@ export async function handleEvent(data) {
         interaction = data.data.custom_id
     console.log(interaction)
     if(command == "about"){
-        respondWithMessage(data.id, data.token, "Holy shit this command worked!")
+        respondWithEmbed(data.id, data.token, {
+            "title":"Terminal 3.2 - " + Bun.env.VERSION_TYPE + " - " + Bun.env.VERSION_NUMBER,
+            "type":"rich",
+            "description"
+        })
         return;
     }
     if(command == "join_gamers"){
@@ -56,6 +60,29 @@ export async function handleEvent(data) {
         respondWithMessage(data.id, data.token, "`Request Received. Adding you to the group now.`")
         giveUserRole(data.data.values[0],data.guild_id,data.member.user.id)
     }
+}
+
+function respondWithEmbed(id, token, embed){
+    fetch(apiUrl + "interactions/" + id + "/" + token + "/callback",{
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+            "type":4,
+            "data":{
+                "embeds:":[
+                    {
+                        embed
+                    }
+                ]
+            }
+        })
+    }).then((res) => {
+        if(!res.ok)
+            console.error("Failed to reply to interaction!")
+        return res.ok
+    })
 }
 
 function respondWithInteraction(id, token, interaction){
