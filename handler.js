@@ -3,15 +3,14 @@ import { apiUrl, gamerRoleId } from "./data/vars"
 export async function handleEvent(data) {
     let command = data.data.name
     let interaction;
-    console.log(data)
     if(data.message != undefined)
         interaction = data.data.custom_id
-    console.log(interaction)
     if(command == "about"){
         respondWithEmbed(data.id, data.token, {
             "title":"Terminal 3.2 - " + Bun.env.VERSION_TYPE + " - " + Bun.env.VERSION_NUMBER,
             "type":"rich",
-            "description"
+            "description":"Terminal 3.2 - Built by untoldtitan for The Odyssey 42",
+            "color":0x00ff00
         })
         return;
     }
@@ -49,9 +48,6 @@ export async function handleEvent(data) {
                 }
             ]
         })
-
-
-        
         return;
     }
     //Interaction Handling
@@ -71,10 +67,8 @@ function respondWithEmbed(id, token, embed){
         body:JSON.stringify({
             "type":4,
             "data":{
-                "embeds:":[
-                    {
-                        embed
-                    }
+                "embeds":[
+                    embed
                 ]
             }
         })
@@ -98,7 +92,6 @@ function respondWithInteraction(id, token, interaction){
     }).then((res) => {
         if(!res.ok)
             console.error("Failed to reply to interaction!")
-        console.log(res)
         return res.ok
     })
 }
