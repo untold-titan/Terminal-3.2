@@ -1,5 +1,7 @@
-# Kirbo Bot v2
-Written In JS
+# Terminal 3.2
+A discord bot for The Odyssey 42
+---
+Written In JS, a custom implementation of the Discord API
 
 ## Setup
 Make sure to put the following values into a .env
