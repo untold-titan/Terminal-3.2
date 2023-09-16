@@ -14,6 +14,58 @@
             "name":"join_city_group",
             "type":1,
             "description":"Join IRL city groups to stay up to date with events"
+        },
+        {
+            "name":"role_color",
+            "type":1,
+            "description":"Get a colored role, to change your username's color",
+            "options":[
+                {
+                    "name":"color",
+                    "description":"The desired color",
+                    "type":3,
+                    "required":true,
+                    "choices":[
+                        {
+                            "name":"Red",
+                            "value":"red"
+                        },
+                        {
+                            "name":"Orange",
+                            "value":"orange"
+                        },
+                        {
+                            "name":"Yellow",
+                            "value":"yellow"
+                        },
+                        {
+                            "name":"Green",
+                            "value":"green"
+                        },
+                        {
+                            "name":"Blue",
+                            "value":"blue"
+                        },
+                        {
+                            "name":"Purple",
+                            "value":"purple"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name":"create_dnd_channel",
+            "type":1,
+            "description":"Create a channel for a dungeons and dragons campaign",
+            "options":[
+                {
+                    "name":"channel_name",
+                    "description":"Name of the channel/campaign",
+                    "type":3,
+                    "required":true
+                }
+            ]
         }
     ]
 }

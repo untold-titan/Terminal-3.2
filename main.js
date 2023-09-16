@@ -90,3 +90,18 @@ function identify(){
 		}
 	}))
 }
+
+process.on("exit", async () => {
+	// Update status to off
+	let res = await fetch("https://discord.com/api/webhooks/1151252349214535831/Jw-DaDoDggxhhZPxFP9q0KbBciUCz1s0hW81xTksK00deSfCa09c_ruB8vmh7EJGygur",{
+		method:"POST",
+		headers:{
+			"Content-Type":"application/json"
+		},
+		body:{
+			"content":"Terminal-3.2 is currently OFF"
+		}
+	})
+	console.log(res.status)
+	throw new Error("Ctrl-C pressed. Stopping.")	
+})
